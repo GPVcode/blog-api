@@ -1,0 +1,17 @@
+#Blog API
+
+## Knex.file
+first set up an id field with an autoincrement set to true and unique constraint
+then we implement the next fields: username and email
+
+
+## db folder
+knex.js file is to let knex know what environment to work in. When we deploy to Heroku, we will automatically get an environment variable called production and it will be detected. Then, we're importing our knexfile and exporting the module to have everything available.
+dpqueries file is where a lot og database action will happen and will closely work with our routes. What we need from the database will be asked here.
+
+## api folder
+The files in this folder correspond to an endpoint in our API and we'll have /users, /posts, /comments available. Notice the importing of queries at the top. THis is how we will closely work with our routes. 
+in app.js, I created a new route /signup that takes a post request. Then call a function from queries files that takes a username, email, and password. Then we will send that info as a json. Body-parser parses our data into strings that make it usable to our function when it gets it. Finally, we take our function response and render it as a json.
+
+##app
+I've set up app.js to use my routes and also have cors set up. Note on cors: cors is potentially dangerous as it allows requests coming from absolutely anywhere to work with your API. You'll want to restrict your api to respond ONLY to incomin requests from a specific IP. In the development environment, you can stick to cors.
