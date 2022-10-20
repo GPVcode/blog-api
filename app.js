@@ -11,6 +11,9 @@ const app = express();
 
 const cors = require('cors');
 
+const bodyparser = require('body-parser')
+app.use(bodyparser.json());
+
 //add cors to express
 app.use(cors())
 
